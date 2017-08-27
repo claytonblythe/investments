@@ -1,6 +1,6 @@
 #investments2--trying to simplify the code
 rm(list=ls())
-abs_path <- '/users/claytonblythe/Desktop/Mega/Data_Science/projects/investments2/data/'
+abs_path <- '/users/claytonblythe/Desktop/Mega/Data_Science/projects/investments/data/'
 setwd(abs_path)
 #libraries that will be used
 x <- c("ggplot2", "dplyr", "animation", "RColorBrewer", "reshape2", "ggthemes", "gganimate", "nnet")
@@ -19,7 +19,7 @@ data$real_cash_multiplier[1] = 1
 #calculate the consecutive values for the account, this could probably be sped up using sapply but this works quickly for now
 for (i in 2:nrow(data)){
   data$appreciation_multiplier[i] = data$Real.Price[i] / data$Real.Price[i-1]
-  data$real_account_value[i] = (data$real_account_value[i-1] * data$appreciation_multiplier[i]) + (data$Real.Dividend[i-1]/data$Real.Price[i-1])*(data$real_account_value[i-1]/12) 
+  data$real_account_value[i] =  (data$real_account_value[i-1] * data$appreciation_multiplier[i]) + (data$Real.Dividend[i-1]/data$Real.Price[i-1])*(data$real_account_value[i-1]/12) 
   data$real_cash_multiplier[i] = data$real_account_value[i] / data$real_account_value[1]
 }
 
